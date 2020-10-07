@@ -25,6 +25,8 @@ export class AppComponent implements OnInit {
       this.commits_object.forEach(element => {
         this.commits_aux_array.push(element);
       });
+
+      console.log(data);
     },error => {
         console.log('error', error);
     });
