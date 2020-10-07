@@ -1,21 +1,28 @@
+
+
 <div class="container">
 
-  <table class="table">
+  <table class="table table-bordered">
     <thead>
       <tr>
-        <th scope="col">Commit Author</th>
-        <th scope="col">Commit Date</th>
-        <th scope="col">Commit Message</th>
-        <th scope="col">Commit Url</th>
+        <th class="text-center" scope="col">Commit Author</th>
+        <th class="text-center" scope="col" colspan="2">Commit Date</th>
+        <th class="text-center" scope="col">Commit Message</th>
+        <th class="text-center" scope="col">Commit Url</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let commit of commits_aux_array">
         <td>{{commit.commit.author.name}}</td>
-        <td>{{commit.commit.author.date  | date: 'dd/MM/yyyy hh:mm a'}}</td>
+        <td class="text-center">
+          <span class="badge badge-primary">{{commit.commit.author.date  | date: 'dd/MM/yyyy'}}</span>
+        </td>
+        <td class="text-center">
+          <span class="badge badge-primary">{{commit.commit.author.date  | date: 'hh:mm a'}}</span>
+        </td>
         <td>{{commit.commit.message}}</td>
-        <td>
-          <a href="{{commit.html_url}}" class="badge badge-primary" target="_blank">Go to Link</a>
+        <td class="text-center">
+          <a href="{{commit.html_url}}" class="badge badge-success" target="_blank">Go to Link</a>
         </td>
       </tr>
     </tbody>
