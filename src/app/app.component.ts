@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
 
-  title = 'takehome';
-  commits_array:any;
+  commits_object:any;
+  commits_aux_array = [];
 
   constructor(private http: HttpClient) {}
 
@@ -19,8 +20,11 @@ export class AppComponent implements OnInit {
 
   getCommits(){
     this.http.get('https://api.github.com/repos/paulfajardo/takehome/commits').subscribe(data => {
-        this.commits_array = data;
-        console.log(this.commits_array);
+      this.commits_object = data;  
+
+      this.commits_object.forEach(element => {
+        this.commits_aux_array.push(element);
+      });
     },error => {
         console.log('error', error);
     });
