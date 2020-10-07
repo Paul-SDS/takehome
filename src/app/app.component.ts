@@ -7,7 +7,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+
   title = 'takehome';
+  commits_array:any;
 
   constructor(private http: HttpClient) {}
 
@@ -17,7 +19,8 @@ export class AppComponent implements OnInit {
 
   getCommits(){
     this.http.get('https://api.github.com/repos/paulfajardo/takehome/commits').subscribe(data => {
-          console.log(data);
+        this.commits_array = data;
+        console.log(this.commits_array);
     },error => {
         console.log('error', error);
     });
