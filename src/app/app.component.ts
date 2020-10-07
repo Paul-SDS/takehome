@@ -23,6 +23,8 @@ export class AppComponent implements OnInit {
       this.commits_object = data;  
 
       this.commits_object.forEach(element => {
+        var date_aux = new Date(element.commit.author.date);
+        element.commit.author.date = date_aux;
         this.commits_aux_array.push(element);
       });
 
